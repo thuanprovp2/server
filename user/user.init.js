@@ -39,6 +39,7 @@ exports.initUserRouter = function initUserRouter(app) {
                 var user = new User({
                     username: req.body.username,
                     password: req.body.password,
+                    name:req.body.name,
                     address: req.body.address,
                     phone: req.body.phone,
                     email: req.body.email,
@@ -57,7 +58,7 @@ exports.initUserRouter = function initUserRouter(app) {
                 });
             };
             Promise.all([
-                validatePropertyObject.call(null, req.body, ['username', 'password', 'role']),
+                validatePropertyObject.call(null, req.body, ['username', 'password','name','address','phone','email','sex','role']),
                 validateObjectExist.call(null, Role, req.body.role)
             ])
                 .then(createUser)
@@ -87,6 +88,7 @@ exports.initUserRouter = function initUserRouter(app) {
             var createUser = function (user) {
                 user.username = req.body.username;
                 user.password = req.body.password;
+                user.name = req.body.name;
                 user.address = req.body.address;
                 user.phone = req.body.phone;
                 user.email = req.body.email;
@@ -105,7 +107,7 @@ exports.initUserRouter = function initUserRouter(app) {
             };
             User.findById(req.body._id, function (err, response) {
                 Promise.all([
-                    validatePropertyObject.call(null, req.body, ['username', 'password', 'role']),
+                    validatePropertyObject.call(null, req.body, ['username', 'password','name','address','phone','email','sex','role']),
                     validateObjectExist.call(null, Role, req.body.role)
                 ])
                     .then(createUser.bind(null, response))
