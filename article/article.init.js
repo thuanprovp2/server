@@ -34,7 +34,8 @@ exports.initArticleRouter = function initArticleRouter(app) {
             var createArticle = function () {
                 var article = new Article({
                     title: req.body.title,
-                    description: req.body.description
+                    description: req.body.description,
+                    image:req.body.image
                 });
 
                 article.save(function (err, doc) {
@@ -75,6 +76,7 @@ exports.initArticleRouter = function initArticleRouter(app) {
             var createArticle = function (article) {
                 article.title = req.body.title;
                 article.description = req.body.description;
+                article.image = req.body.image;
 
                 article.save(function (err, doc) {
                     if (err) {

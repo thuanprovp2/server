@@ -18,7 +18,7 @@ module.exports = function login(req, res) {
                 res.status(400).json({message: err});
             }
             else if (docs.length > 0) {
-                var token = jwt.encode(docs[0], 'shopgiay');
+                var token = jwt.encode(docs[0], 'shopflower');
                 res.status(200).json({'user': docs[0], token: 'JWT ' + token});
             }
             else {

@@ -11,7 +11,7 @@ var userSchema = mongoose.Schema({
         address: String,
         phone: String,
         email: String,
-        sex: Boolean,
+        sex: String,
         Birthday: String,
         role: {
             type: mongoose.Schema.Types.ObjectId,

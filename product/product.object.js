@@ -8,7 +8,7 @@ var ProductSchema = mongoose.Schema({
         description: String,
         image:String,
         price: Number,
-        status: Boolean,
+        quantity: Number,
         category: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Category'

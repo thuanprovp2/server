@@ -40,7 +40,7 @@ exports.initProductRouter = function initProductRouter(app) {
                     description: req.body.description,
                     image:req.body.image,
                     price: req.body.price,
-                    status: req.body.status,
+                    quantity: req.body.quantity,
                     category: req.body.category
                 });
 
@@ -54,7 +54,7 @@ exports.initProductRouter = function initProductRouter(app) {
                 });
             };
             Promise.all([
-                    validatePropertyObject.call(null, req.body, ['name', 'description', 'image','price','status','category']),
+                    validatePropertyObject.call(null, req.body, ['name', 'description', 'image','price','quantity','category']),
                     validateObjectExist.call(null, Category, req.body.category)
                 ])
                 .then(createProduct)
@@ -87,7 +87,7 @@ exports.initProductRouter = function initProductRouter(app) {
                 product.description = req.body.description;
                 product.image = req.body.image;
                 product.price = req.body.price;
-                product.status = req.body.status;
+                product.quantity = req.body.quantity;
                 product.category = req.body.category;
 
                 product.save(function (err, doc) {
@@ -101,7 +101,7 @@ exports.initProductRouter = function initProductRouter(app) {
             };
             Product.findById(req.body._id, function (err, response) {
                 Promise.all([
-                        validatePropertyObject.call(null, req.body, ['name', 'description', 'image','price','status','category']),
+                        validatePropertyObject.call(null, req.body, ['name', 'description', 'image','price','quantity','category']),
                         validateObjectExist.call(null, Category, req.body.category)
                     ])
                     .then(createProduct.bind(null, response))
